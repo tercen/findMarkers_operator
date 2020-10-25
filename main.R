@@ -1,5 +1,6 @@
 library(tercen)
 library(dplyr)
+library(tidyr)
 library(scran)
 
 ctx <- tercenCtx()
@@ -18,9 +19,11 @@ genes_to_select <- markers_detected[[cluster_to_evaluate]] %>%
   as_tibble(rownames = "gene_id") %>%
   dplyr::filter(Top <= top_genes)
 
-heatmap(genes_to_select %>%
-          select(starts_with("log")) %>%
-          as.matrix())
+output_frame <- genes_to_select %>%
+  pivot_longer(c(starts_with("logFC")),
+               names_to = "comparison",
+               values_to = "logFC") %>%
+  select(-Top, -p.value, -FDR)
 
 ctx$addNamespace() %>%
   ctx$save()
