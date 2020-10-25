@@ -1,10 +1,21 @@
 {
-  "name": "Template R operator",
-  "description": "Return the medium value of a cell",
-  "tags": ["template"],
+  "name": "scRNA-seq cluster marker gene detection",
+  "description": "Operator to identify marker genes in scRNA-seq clusters.",
+  "tags": ["RNA-seq", "scRNA-seq", "single-cell", "genomics", "gene expression", "clustering"],
   "authors": ["tercen"],
-  "urls": ["https://github.com/tercen/template_R_operator"],
-  "properties": []
+  "urls": ["https://github.com/tercen/scRNA_seq_marker_gene_detection"],
+  "properties": [
+    {
+      "kind": "DoubleProperty",
+      "name": "cluster_to_evaluate",
+      "defaultValue": 1,
+      "description": "Which cluster to get the marker genes from."
+    },
+    {
+    "kind": "DoubleProperty",
+    "name": "top_genes",
+    "defaultValue": 10,
+    "description": "The number of top genes for each pairwise comparison to select."
+  }
+  ]
 }
-
-
