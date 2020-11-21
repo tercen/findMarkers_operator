@@ -15,7 +15,7 @@ output_frame <- lapply(names(markers_detected),
                          as_tibble(rownames = ".ri") %>%
                          mutate(cluster = x,
                                 .ri = as.integer(.ri) - 1) %>%
-                         select(cluster, .ri, Top, FDR)) %>%
+                         select(marker_for_cluster = cluster, .ri, Top, FDR)) %>%
   bind_rows()
 
 ctx$addNamespace(output_frame) %>%
