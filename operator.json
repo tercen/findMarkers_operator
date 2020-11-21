@@ -6,16 +6,21 @@
   "urls": ["https://github.com/tercen/scRNA_seq_marker_gene_detection"],
   "properties": [
     {
-      "kind": "DoubleProperty",
-      "name": "cluster_to_evaluate",
-      "defaultValue": 1,
-      "description": "Which cluster to get the marker genes from."
-    },
-    {
-    "kind": "DoubleProperty",
-    "name": "top_genes",
-    "defaultValue": 10,
-    "description": "The number of top genes for each pairwise comparison to select."
+    "kind": "EnumeratedProperty",
+    "name": "direction",
+    "defaultValue": "any",
+    "values": [
+      "any",
+      "up",
+      "down"
+    ],
+    "description": "The direction of log-fold changes to be considered for each cluster."
+  },
+  {
+    "kind": "NumericProperty",
+    "name": "log_fold_change_threshold",
+    "defaultValue": 0,
+    "description": "Log-fold change threshold to be tested against."
   }
   ]
 }

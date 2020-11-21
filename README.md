@@ -5,14 +5,19 @@
 
 ##### Usage
 
-Input projection|.
+Input projection| Description
 ---|---
 `y-axis`              | numeric, logged and normalised count data, per cell 
 `column names, top`   | character, cluster ID
 `column names, bottom`| character, cell ID
 `row names`           | character, gene ID
 
-Output relations|.
+| Input parameters | Description                                                                                 |
+| -----------------| ------------------------------------------------------------------------------------------- |
+| `direction       | "any, "up" or "down", adjusted _p value_ cutoff for independent filtering (default = "any") |
+| `LFC_shrinkage`  | Numeric, log-fold change threshold to be tested against (default = 0).                      |
+
+Output relations| Description
 ---|---
 `marker_for_cluster` | character, the cluster for which the markers were assayed
 `Top`                | numeric, the minimum rank across all pairwise comparisons between the cluster assayed and all others
