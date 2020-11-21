@@ -17,7 +17,7 @@
     "description": "The direction of log-fold changes to be considered for each cluster."
   },
   {
-    "kind": "NumericProperty",
+    "kind": "DoubleProperty",
     "name": "log_fold_change_threshold",
     "defaultValue": 0,
     "description": "Log-fold change threshold to be tested against."
