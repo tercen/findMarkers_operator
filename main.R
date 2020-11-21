@@ -1,6 +1,5 @@
 library(tercen)
 library(dplyr)
-library(tidyr)
 library(scran)
 
 ctx <- tercenCtx()
