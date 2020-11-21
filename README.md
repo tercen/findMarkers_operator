@@ -1,46 +1,31 @@
-# Template R operator for Tercen
-
-The `Template R operator` is a template repository for the creation of R operators in Tercen. An overview of steps for developing an operator are:
-
-1. create a github repo
-2. install tercen_studio
-3. login to tercen_studio
-4. git clone the newly created repo
-5. start developing in R in tercen_studio
-6. add R packages to the repo
-7. push to the github repo
-8. go to tercen and install the operator
-
-More information can be found in [Tercen app builder's guide](https://tercen.github.io/appbuilders-guide/).
-
-Below is the operator README standard structure:
+# scRNA-seq cluster marker gene detection operator
 
 ##### Description
-
-The `Template R operator` is a template repository for the creation of R operators in Tercen.
+`scRNA-seq cluster marker gene detection` identifies the genes that are markers for previously-identified clusters in single-cell RNA-seq data.
 
 ##### Usage
 
 Input projection|.
 ---|---
-`x-axis`        | type, description 
-`y-axis`        | type, description 
-`row`           | type, description 
-`column`        | type, description 
-`colors`        | type, description 
-`labels`        | type, description 
+`y-axis`              | numeric, logged and normalised count data, per cell 
+`column names, top`   | character, cluster ID
+`column names, bottom`| character, cell ID
+`row names`           | character, gene ID
 
 Output relations|.
 ---|---
-`output_var`        | output relation
-`Operator view`        | view of the Shiny application
+`marker_for_cluster` | character, the cluster for which the markers were assayed
+`Top`                | numeric, the minimum rank across all pairwise comparisons between the cluster assayed and all others
+`FDR`                | numeric, the Benjamini-Hochberg adjusted p-value for each gene and assayed cluster
 
 ##### Details
+The output relations allow the user to select marker genes for each cluster according to their preferred criteria and thresholds.
 
-Details on the computation.
+The operator uses the normalisation worklfow described in the corresponding chapter of the ["Orchestrating Single-Cell Analysis"](https://osca.bioconductor.org/normalization.html) book. For this it uses the _scran_ BioConductor package.
+
+#### References
+Amezquita, et. al. ["Orchestrating single-cell analysis with BioConductor"](https://www.nature.com/articles/s41592-019-0654-x), Nature Methods (2019)
 
 ##### See Also
 
-[template_shiny_operator](https://github.com/tercen/template_shiny_operator)
-, [template_docker_operator](https://github.com/tercen/template_docker_operator)
-
+#### Examples
