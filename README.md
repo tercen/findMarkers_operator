@@ -12,11 +12,11 @@ Input projection| Description
 `column names, bottom`| character, cell ID
 `row names`           | character, gene ID
 
-| Input parameters    | Description                                                                                 |
-| ------------------- | ------------------------------------------------------------------------------------------- |
-| `direction`         | "any, "up" or "down", adjusted _p value_ cutoff for independent filtering (default = "any") |
-| `LFC_shrinkage`     | Numeric, log-fold change threshold to be tested against (default = 0).                      |
-| `comparison_to_make`| "any" or "all", wether the function should compare each cluster to any other cluster or to all clusters (default = "any") |
+| Input parameters           | Description                                                                                 |
+| -------------------------- | ------------------------------------------------------------------------------------------- |
+| `direction`                | "any, "up" or "down", adjusted _p value_ cutoff for independent filtering (default = "any") |
+| `log-fold change threhold` | Numeric, log-fold change threshold to be tested against (default = 0).                      |
+| `comparison_to_make`       | "any" or "all", wether the function should compare each cluster to any other cluster or to all clusters (default = "any") |
 
 Output relations| Description
 ---|---
