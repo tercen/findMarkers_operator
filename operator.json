@@ -21,6 +21,16 @@
     "name": "log_fold_change_threshold",
     "defaultValue": 0,
     "description": "Log-fold change threshold to be tested against."
+  },
+  {
+    "kind": "EnumeratedProperty",
+    "name": "comparison_to_make",
+    "defaultValue": "any",
+    "values": [
+      "any",
+      "all"
+    ],
+    "description": "Whether the function should compare each cluster to any other cluster or to all clusters."
   }
   ]
 }
