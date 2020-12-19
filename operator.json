@@ -1,5 +1,5 @@
 {
-  "name": "scRNA-seq cluster marker gene detection",
+  "name": "findMarkers",
   "description": "Operator to identify marker genes in scRNA-seq clusters.",
   "tags": ["RNA-seq", "scRNA-seq", "single-cell", "genomics", "gene expression", "clustering"],
   "authors": ["tercen"],
