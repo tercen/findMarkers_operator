@@ -1,7 +1,7 @@
 {
-  "name": "findMarkers",
+  "name": "Find Differentially Expressed Markers",
   "description": "Operator to identify marker genes in scRNA-seq clusters.",
-  "tags": ["RNA-seq", "scRNA-seq", "single-cell", "genomics", "gene expression", "clustering"],
+  "tags": ["omics", "scRNA-seq", "clustering"],
   "authors": ["tercen"],
   "urls": ["https://github.com/tercen/scRNA_seq_marker_gene_detection"],
   "properties": [
