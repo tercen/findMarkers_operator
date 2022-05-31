@@ -3,7 +3,7 @@
   "description": "Operator to identify marker genes in scRNA-seq clusters.",
   "tags": ["omics", "scRNA-seq", "clustering"],
   "authors": ["tercen"],
-  "urls": ["https://github.com/tercen/scRNA_seq_marker_gene_detection"],
+  "urls": ["https://github.com/tercen/findMarkers_operator"],
   "properties": [
     {
     "kind": "EnumeratedProperty",
