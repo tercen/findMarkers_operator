@@ -1,0 +1,20 @@
+{
+  "kind": "OperatorUnitTest",
+  "name": "test_1",
+  "namespace": "ds8",
+  "inputDataUri": "test_1_in.csv",
+  "outputDataUri": ["test_1_out_1.csv", "test_1_out_3.csv"],
+  "columns": [
+    "ds60..cell_id"
+  ],
+  "rows": ["ds1..gene_id"],
+  "colors": [
+    "ds60.cluster_id"
+  ],
+  "labels": [],
+  "yAxis": "y_values",
+  "xAxis": "",
+  "generatedOn": "03/07/2023 04:37:09 PM 2023",
+  "version": "",
+  "relTol": 1e-05
+}

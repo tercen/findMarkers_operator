@@ -1,52 +1,37 @@
 suppressPackageStartupMessages(expr = {
-  library(tercen)
+  library(Seurat)
+  library(tidyr)
   library(dplyr)
-  library(scran) 
+  library(tercen)
 })
 
-ctx <- tercenCtx()
+source("./utils.R")
 
-direction <- as.character(ctx$op.value('direction'))
-log_fold_change_threshold <- as.numeric(ctx$op.value('log_fold_change_threshold'))
-comparison_to_make <- as.character(ctx$op.value('comparison_to_make'))
+ctx = tercenCtx()
 
-logged_count_matrix <- ctx$as.matrix()
+obj <- as_Seurat(ctx)
+col_factor <- ctx$colors[[1]]
+col_map <- ctx$select(c(".ci", ".colorLevels", col_factor)) %>% unique
+obj@meta.data <- obj@meta.data %>% bind_cols(col_map)
 
-clusters <- ctx$cselect()[[1]]
+method <- ctx$op.value("method", as.character, "wilcox")
+logfc.threshold <- ctx$op.value("log_fold_change_threshold", as.double, 0)
 
-markers_detected <- findMarkers(
-  logged_count_matrix,
-  clusters,
-  direction = direction,
-  lfc = log_fold_change_threshold,
-  pval.type = comparison_to_make
-)
-
-output_frame <- lapply(
-  names(markers_detected), function(x) {
-    
-     to_return <- markers_detected[[x]] %>%
-       as_tibble(rownames = ".ri") %>%
-       mutate(cluster = x,
-              .ri = as.integer(.ri) - 1)
-     
-     if (comparison_to_make == "any") {
-       
-       to_return <- to_return %>%
-         select(marker_for_cluster = cluster, .ri, Top, FDR)
-       
-     } else if (comparison_to_make == "all") {
-       
-       to_return <- to_return %>%
-         select(marker_for_cluster = cluster, .ri, FDR)
-       
-     }
-     
-     return(to_return)
-     
+df_markers <- lapply(unique(col_map[[col_factor]]), function(col) {
+  df <- FindMarkers(
+    obj,
+    ident.1 = col,
+    group.by = col_factor,
+    test.use = method,
+    logfc.threshold = logfc.threshold,
+    min.cells.group = 0,
+    verbose = FALSE
+  )
+  df$focal_group <- col
+  df$.ri <- rownames(df)
+  df
 }) %>%
-  bind_rows()
-
-
-ctx$addNamespace(output_frame) %>%
+  do.call(rbind, .) %>%
+  mutate(.ri = as.integer(.ri)) %>%
+  ctx$addNamespace() %>%
   ctx$save()
