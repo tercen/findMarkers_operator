@@ -1,37 +1,26 @@
-# scRNA-seq cluster marker gene detection operator
+# scRNA-seq - Find Markers
 
 ##### Description
-`scRNA-seq cluster marker gene detection` identifies the genes that are markers for previously-identified clusters in single-cell RNA-seq data.
+
+`scRNA-seq - Find Markers` identifies genes that are differentially expressed among clusters
+in single cell RNA-seq data.
 
 ##### Usage
 
 Input projection| Description
 ---|---
-`y-axis`              | numeric, logged and normalised count data, per cell 
-`column names, top`   | character, cluster ID
-`column names, bottom`| character, cell ID
-`row names`           | character, gene ID
+`y-axis`  | numeric, logged and normalised count data, per cell 
+`colors`  | character, cluster ID
+`columns` | character, cell ID
+`rows`    | character, gene ID
 
-| Input parameters           | Description                                                                                 |
-| -------------------------- | ------------------------------------------------------------------------------------------- |
-| `direction`                | "any, "up" or "down", adjusted _p value_ cutoff for independent filtering (default = "any") |
-| `log-fold change threhold` | Numeric, log-fold change threshold to be tested against (default = 0).                      |
-| `comparison_to_make`       | "any" or "all", wether the function should compare each cluster to any other cluster or to all clusters (default = "any") |
-
-Output relations| Description
----|---
-`marker_for_cluster` | character, the cluster for which the markers were assayed
-`Top`                | numeric, the minimum rank across all pairwise comparisons between the cluster assayed and all others
-`FDR`                | numeric, the Benjamini-Hochberg adjusted p-value for each gene and assayed cluster
 
 ##### Details
-The output relations allow the user to select marker genes for each cluster according to their preferred criteria and thresholds.
 
-The operator uses the normalisation worklfow described in the corresponding chapter of the ["Orchestrating Single-Cell Analysis"](https://osca.bioconductor.org/normalization.html) book. For this it uses the _scran_ BioConductor package.
+The operator uses the `Seurat` R package and the preprocessing workflow described in the ["package website"](https://satijalab.org/seurat/).
 
-#### References
-Amezquita, et. al. ["Orchestrating single-cell analysis with BioConductor"](https://www.nature.com/articles/s41592-019-0654-x), Nature Methods (2019)
+##### References
 
-##### See Also
+> Hao, Y., Hao, S., Andersen-Nissen, E., Mauck, W. M., Zheng, S., Butler, A., ... & Satija, R. (2021). Integrated analysis of multimodal single-cell data. Cell, 184(13), 3573-3587.
 
-#### Examples
+[Link to Seurat reference](https://doi.org/10.1016/j.cell.2021.04.048)
