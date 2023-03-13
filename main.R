@@ -17,7 +17,9 @@ obj@meta.data <- obj@meta.data %>% bind_cols(col_map)
 method <- ctx$op.value("method", as.character, "wilcox")
 logfc.threshold <- ctx$op.value("log_fold_change_threshold", as.double, 0)
 
-df_markers <- lapply(unique(col_map[[col_factor]]), function(col) {
+df_markers <- list()
+
+for (col in unique(col_map[[col_factor]])) {
   df <- FindMarkers(
     obj,
     ident.1 = col,
@@ -29,8 +31,10 @@ df_markers <- lapply(unique(col_map[[col_factor]]), function(col) {
   )
   df$focal_group <- col
   df$.ri <- rownames(df)
-  df
-}) %>%
+  df_markers[[col]] <- df
+}
+
+df_markers %>%
   do.call(rbind, .) %>%
   mutate(.ri = as.integer(.ri)) %>%
   ctx$addNamespace() %>%

@@ -2,7 +2,7 @@
 
 ##### Description
 
-`scRNA-seq - Find Markers` identifies genes that are differentially expressed among clusters
+`scRNA-seq - Find Markers` identifies genes that are differentialy expressed among clusters
 in single cell RNA-seq data.
 
 ##### Usage

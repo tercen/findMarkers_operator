@@ -1,5 +1,5 @@
 {
-  "name": "scRNAseq - Find Markers",
+  "name": "scRNAseq Find Markers",
   "description": "Operator to identify differentially expressed genes among scRNA-seq clusters.",
   "tags": ["omics", "scRNAseq", "clustering"],
   "authors": ["tercen"],
