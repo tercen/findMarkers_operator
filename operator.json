@@ -1,32 +1,40 @@
 {
   "name": "scRNAseq Find Markers",
   "description": "Operator to identify differentially expressed genes among scRNA-seq clusters.",
-  "tags": ["omics", "scRNAseq", "clustering"],
-  "authors": ["tercen"],
-  "urls": ["https://github.com/tercen/scRNAseq_findMarkers_operator"],
+  "tags": [
+    "omics",
+    "sc-RNA-seq",
+    "clustering"
+  ],
+  "authors": [
+    "tercen"
+  ],
+  "urls": [
+    "https://github.com/tercen/scRNAseq_findMarkers_operator"
+  ],
   "properties": [
     {
-    "kind": "EnumeratedProperty",
-    "name": "method",
-    "defaultValue": "wilcox",
-    "values": [
-      "wilcox",
-      "bimod",
-      "roc",
-      "t",
-      "negbinom",
-      "poisson",
-      "LR",
-      "MAST",
-      "DESeq2"
-    ],
-    "description": "Denotes which statistical test to use."
-  },
-  {
-    "kind": "DoubleProperty",
-    "name": "log_fold_change_threshold",
-    "defaultValue": 0,
-    "description": "Log-fold change threshold to be tested against."
-  }
+      "kind": "EnumeratedProperty",
+      "name": "method",
+      "defaultValue": "wilcox",
+      "values": [
+        "wilcox",
+        "bimod",
+        "roc",
+        "t",
+        "negbinom",
+        "poisson",
+        "LR",
+        "MAST",
+        "DESeq2"
+      ],
+      "description": "Denotes which statistical test to use."
+    },
+    {
+      "kind": "DoubleProperty",
+      "name": "log_fold_change_threshold",
+      "defaultValue": 0,
+      "description": "Log-fold change threshold to be tested against."
+    }
   ]
 }
