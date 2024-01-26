@@ -1,6 +1,6 @@
 {
   "name": "scRNAseq Find Markers",
-  "description": "Operator to identify differentially expressed genes among scRNA-seq clusters.",
+  "description": "Identifies differentially expressed genes among single-cell RNA sequencing clusters.",
   "tags": [
     "omics",
     "sc-RNA-seq",
